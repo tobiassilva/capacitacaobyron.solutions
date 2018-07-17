@@ -1,0 +1,728 @@
+/*
+Theme Name: Capacitação Parte 2
+Theme URI:
+Author: Vinícius de Oliveira Souza
+Author URI:
+Description: Projeto Final para a capacitação Wordpress
+Version: 1.0
+Tags: html5, css, city, blog, byron
+*/
+
+/* 
+--------------- RESET ------------------
+*/
+
+html {
+    margin: 0!important;
+    padding: 0!important;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+
+
+/* 
+--------------- PADRÕES ------------------
+*/
+
+.container {
+    display: grid;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas: 
+            "navbar"
+            "carousel"
+            "sobre"
+            "byron"
+            "contato"
+            "footer";
+}
+
+/* 
+--------------- NAVBAR ------------------
+*/
+
+.navbar {
+    grid-area: navbar;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+            "botao"
+            "menus";
+}
+
+.botao-mobile {
+    grid-area: botao;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    background-color: black;
+}
+
+#nav-button {
+    grid-column: 2/2;
+    width: 40px;
+    height: 40px;
+    margin: 10% 0% 10% 25%;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+}
+
+/******* Garantir que o menu não apareça até o botao ser pressionado*******/
+#main-menu {
+    display: none;
+}
+
+nav ul {
+    grid-area: menus;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+            "home"
+            "sobre"
+            "byron"
+            "contato";
+    grid-gap: 10px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: black;
+    padding-bottom: 25px; 
+}
+
+nav ul li#menu-item-20 {
+    grid-area: home;
+}
+
+nav li#menu-item-21 {
+    grid-area: sobre;
+}
+
+nav li#menu-item-22 {
+    grid-area: byron;
+}
+
+nav li#menu-item-23 {
+    grid-area: contato;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 25px;
+}
+
+nav ul li a:hover {
+    color: #da6709;
+}
+
+@media only screen and (min-width: 768px) {
+    #main-menu {
+        display: block;
+    }
+
+    #nav-button {
+        display: none;
+    }
+
+    nav ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto ;
+        grid-template-areas:
+                "home sobre byron contato";
+        padding-top: 25px;
+    }
+}
+
+
+/* 
+--------------- CAROUSEL ------------------
+*/
+
+#carousel {
+    grid-area: carousel;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "left imagem right";
+}
+
+#left {
+    grid-area: left;
+}
+
+#right {
+    grid-area: right;
+}
+
+#left,
+#right {
+    border: none;
+    padding: 0 10px 0px 10px;
+    margin: 0;
+    color: #000;
+    background-color: transparent;
+}
+
+#carousel_text {
+    text-align: center;
+}
+
+.gallery-item {
+    -webkit-margin-before: 0em!important;
+    -webkit-margin-after: 0em!important;
+    margin: 0;
+}
+
+.gallery-icon img {
+    grid-area: imagem;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    #left,
+    #right {
+        padding: 0px 15px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    #left,
+    #right {
+        padding: 0px 20px;
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #carousel {
+        margin: 0;
+    }
+
+    #left,
+    #right {
+        padding: 0px 0px;
+        font-size: 30px;
+    }
+
+    .gallery-icon img {
+        width: 100%;
+        height: auto;
+    }
+}
+/* 
+--------------- SOBRE ------------------
+*/
+
+#sobre {
+    grid-area: sobre;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+            "sobre_titulo" 
+            "sobre_img" 
+            "sobre_texto";
+    justify-items: center;
+    text-align: center;
+    line-height: 25px;
+}
+
+.sobre_titulo {
+    grid-area: sobre_titulo;
+    font-weight: 900;
+}
+
+.sobre_img {
+    grid-area: sobre_img;
+    width: 50%;
+}
+
+.sobre_texto {
+    grid-area: sobre_texto;
+    font-size: 14px;
+    padding: 0px 10px 0px 10px;
+}
+
+@media only screen and (min-width: 768px) {
+    #sobre {
+        grid-template-columns: 1fr 1.5fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+                "sobre_img sobre_titulo"
+                "sobre_img sobre_texto";
+    }
+
+    .sobre_img {
+        padding-top: 20px;
+    }
+    .sobre_titulo {
+        font-size: 40px;
+    }
+    .sobre_texto {
+        padding: 0px 40px 25px 0px;
+        text-align: justify;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sobre_titulo {
+        font-size: 50px;
+    }
+    .sobre_texto {
+        font-size: 20px;
+        line-height: 40px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    #sobre {
+        margin: 50px 30px;
+    }
+    .sobre_titulo {
+        font-size: 70px;
+    }
+
+    .sobre_texto {
+        font-size: 30px;
+        line-height: 50px;
+    }
+}
+
+
+/* 
+--------------- BYRON ------------------
+*/
+
+#byron {
+    grid-area: byron;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+            "logo"
+            "titulo" 
+            "info" 
+            "mapa"
+            "servicos";
+    justify-items: center;
+    text-align: center;
+    line-height: 25px;
+    background-color: #252525;
+    color: white;
+    padding-top: 50px;
+}
+
+.byron_logo {
+    grid-area: logo;
+    width: 100%;
+}
+
+.titulo {
+    grid-area: titulo;
+    font-weight: 900;
+}
+
+/* 
+--------------- BYRON ------------------
+--------------- Informações ------------------
+*/
+
+.container_info {
+    grid-area: info;
+}
+
+.container_info p {
+    font-size: 20px;
+    padding: 15px 0;
+    margin: 0;
+}
+
+#map {
+    grid-area: mapa;
+    width: 100%;
+    height: 200px;
+}
+
+/* 
+--------------- BYRON ------------------
+--------------- Servicos ------------------
+*/
+
+#servicos {
+    grid-area: servicos;
+    padding-top: 30px;
+}
+
+.container_servicos1,
+.container_servicos2 {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+@media only screen and (min-width: 768px) {
+    /* 
+    --------------- BYRON ------------------
+    --------------- Informações ------------------
+    */
+    .container_info {
+        grid-area: info;
+        display: grid;
+        grid-template-columns: 0.75fr 2fr 0.75fr 2fr;
+        grid-template-rows: auto auto;
+        align-items: center;
+        grid-row-gap: 40px;
+        background-color: #252525;
+        color: white;
+        padding: 5% 5%;
+        font-size: 20px;
+    }
+
+    .titulo {
+        font-size: 40px;
+    }
+
+    .container_info p {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        height: 300px;
+    }
+
+    /* 
+    --------------- BYRON ------------------
+    --------------- Serviços ------------------
+    */
+
+    .container_servicos1,
+    .container_servicos2 {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+                "titulo titulo"
+                "imagem texto";
+        margin-bottom: 50px;
+    }
+
+    .container_servicos1 h2,
+    .container_servicos2 h2 {
+        font-size: 25px;
+        font-weight: 700;
+        grid-area: titulo;
+    }
+
+    .servicos_img {
+        padding: 0 50px;
+        grid-area: imagem;
+    }
+
+    .container_servicos1 p,
+    .container_servicos2 p {
+        padding: 0px 100px 0px 0px;
+        grid-area: texto;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    /* 
+    --------------- BYRON ------------------
+    --------------- Informações ------------------
+    */
+    .container_info {
+        padding: 5% 12.5%;
+        font-size: 25px;
+    }
+
+    .titulo {
+        font-size: 50px;
+    }
+
+    #map {
+        height: 400px;
+    }
+
+    /* 
+    --------------- BYRON ------------------
+    --------------- Serviços ------------------
+    */
+
+    .servicos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+                "servico1 servico2";
+        margin-bottom: 50px;
+    }
+
+    .container_servicos1 {
+        grid-area: servico1;
+    }
+
+    .container_servicos2 {
+        grid-area: servico2;
+    }
+
+    .container_servicos1,
+    .container_servicos2 {
+        grid-template-columns: auto;
+        grid-template-rows: 0.75fr 1.5fr 1fr;
+        grid-template-areas:
+                "titulo"
+                "imagem"
+                "texto";
+        justify-items: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container_servicos1 p,
+    .container_servicos2 p {
+        padding: 0px 5%;
+        grid-area: texto;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .titulo {
+        font-size: 70px;
+    }
+
+    .container_info {
+        padding: 0;
+        margin: 100px 0px;
+    }
+
+    .container_info i,
+    .container_info p {
+        font-size: 35px;
+        line-height: 50px;
+    }
+
+    .container_servicos1,
+    .container_servicos2 {
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .container_servicos1 h2,
+    .container_servicos2 h2 {
+        font-size: 50px;
+    }
+
+    .container_servicos1 img,
+    .container_servicos2 img {
+        width: 50%;
+    }
+
+    .container_servicos1 p,
+    .container_servicos2 p {
+        font-size: 30px;
+        line-height: 50px;
+    }
+}
+
+
+/* 
+--------------- CONTATO ------------------
+*/
+
+#contato {
+    grid-area: contato;
+    background-color: #D2E2D2;
+}
+
+#contato .titulo {
+    border-bottom: 1px solid #000;
+    padding: 3%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.contato-form {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(7, auto);
+    padding: 0px 15px 30px 15px;
+}
+
+#contato label,
+#contato input,
+#contato button, 
+#contato textarea {
+    font-size: 1em;
+    padding: 1% 1%;
+    width: 75%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#contato textarea {
+    height: 50px;
+}
+
+#contato button {
+    margin-top: 5%;
+    background-color: #252525;
+    color: white;
+}
+
+#contato button:hover {
+    background-color: #1ED7F3;
+}
+
+@media only screen and (min-width: 768px) {
+    #contato label,
+    #contato input,
+    #contato textarea {
+        margin: 0;
+        margin-left: 50px;
+        width: 80%;
+        text-align: left;
+    }
+
+    #contato button {
+        margin: 0;
+        margin-top: 5%;
+        margin-left: 50px;
+        width: 50%;
+        float: left;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .contato-form {
+        grid-template-columns: 1fr 5fr;
+        grid-template-rows: auto auto auto auto;
+        grid-row-gap: 30px;
+    }
+    
+    #contato label,
+    #contato input,
+    #contato button, 
+    #contato textarea {
+        font-size: 1.5em;
+    }
+    
+    #contato textarea {
+        height: 80px;
+    }
+
+    #contato button {
+        grid-row: 4/4;
+        grid-column: 2/2;
+        margin-left: 50px;
+        width: 82%;
+    }
+    
+}
+
+@media only screen and (min-width: 1440px) {
+    #contato label,
+    #contato input,
+    #contato button, 
+    #contato textarea {
+        font-size: 2em;
+    }
+}
+
+/* 
+--------------- FOOTER ------------------
+*/
+
+#footer {
+    grid-area: footer;
+    background-color: #000;
+}
+
+.redes_sociais {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    font-size: 25px;
+    padding: 20px 0px;
+}
+
+.sociais_info {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    color: white;
+    justify-items: center;
+}
+
+.sociais_info i {
+    font-size: 25px;
+}
+
+.sociais_info p {
+    margin: 10px 0px;
+}
+
+@media only screen and (min-width: 768px) {
+    #footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "info redes_sociais";
+        justify-items: center;
+    }
+
+    .redes_sociais {
+        grid-area: redes_sociais;
+        margin: 50px 0px 50px 0px;
+        grid-column-gap: 80px;
+    }
+
+    .sociais_info {
+        grid-area: info;
+        margin: 50px 0px 0px 0px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .sociais_info p,
+    .sociais_info i {
+        font-size: 25px;
+    }
+
+    .redes_sociais i {
+        font-size: 35px;
+    }
+}
